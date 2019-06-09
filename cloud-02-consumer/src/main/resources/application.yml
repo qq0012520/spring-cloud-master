@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: eureka-consumer
+server:
+  port: 8080
+eureka:
+  instance:
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+
+client:
+  request:
+    connection-request-timeout: 1000
+    connect-timeout: 1000
+    read-timeout: 3000

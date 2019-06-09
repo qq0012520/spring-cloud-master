@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.bigassdoggg</groupId>
+    <artifactId>spring-cloud-master</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0</version>
+
+    <properties>
+        <java.version>1.8</java.version>
+        <spring-cloud.version>Greenwich.RELEASE</spring-cloud.version>
+    </properties>
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.1.5.RELEASE</version>
+        <relativePath/>
+    </parent>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.16.20</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring-cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <modules>
+        <module>cloud-01-eureka-server-a</module>
+        <module>cloud-01-eureka-client1</module>
+        <module>cloud-01-eureka-client2</module>
+        <module>cloud-01-eureka-invoker</module>
+        <module>cloud-01-eureka-server-b</module>
+        <module>cloud-02-eureka-server</module>
+        <module>cloud-02-provider-1</module>
+        <module>cloud-02-provider-2</module>
+        <module>cloud-02-consumer</module>
+        <module>cloud-02-model</module>
+        <module>cloud-02-retry</module>
+        <module>cloud-03-eureka-server</module>
+        <module>cloud-03-provider-a</module>
+        <module>cloud-03-provider-b</module>
+        <module>cloud-03-consumer-a</module>
+        <module>cloud-03-consumer-b</module>
+        <module>cloud-03-hystrix-dashboard</module>
+        <module>cloud-03-hystrix-turbine</module>
+    </modules>
+</project>

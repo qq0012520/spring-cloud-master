@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: eureka-server
+server:
+  port: 8761
+eureka:
+  instance:
+    #！！！这里引用的主机名不能和 client.service-url 一样,不然无法建立Eureka服务器的 replica
+    #猜测是由于相同的主机名会造成引用当前实例造成的
+    hostname: eureka-server-a
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
+    lease-renewal-interval-in-seconds: 10 #客户端想服务器发送心跳间隔
+    lease-expiration-duration-in-seconds: 30 #最后一次收到心跳后标记为待剔除状态的实际那
+  client:
+    service-url:
+      #！！！这里引用的主机名不能和 instance.hostname 一样,不然无法建立Eureka服务器的 replica
+      #猜测是由于相同的主机名会造成引用当前实例造成的
+      defaultZone: http://eureka-server-b:8762/eureka/
+  server:
+    eviction-interval-timer-in-ms: 10000 #定期清理注册表时间间隔

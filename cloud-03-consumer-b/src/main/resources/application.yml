@@ -1,0 +1,43 @@
+spring:
+  application:
+    name: consumer-service
+  cloud:
+    loadbalancer:
+      retry:
+        enabled: true
+server:
+  port: 8090
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    hostname: localhost
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
+
+client:
+  request:
+    connection-request-timeout: 1000
+    connect-timeout: 1000
+    read-timeout: 1500
+
+eureka-provider:
+  ribbon:
+    OkToRetryOnAllOperations: true # 这里发现即使服务被提前熔断后，重试机制依然会被执行
+    MaxAutoRetriesNextServer: 1
+    MaxAutoRetries: 1
+
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 5000 # !!! 这里发现即使服务被提前熔断后，重试机制依然会被执行
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: hystrix.stream
