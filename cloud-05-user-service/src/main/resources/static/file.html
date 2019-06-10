@@ -1,0 +1,26 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>文件上传</title>
+    </head>
+    <body>
+        <div>
+            <form method="post" action="http://localhost:7200/upload" enctype="multipart/form-data">
+                <input name="file" type="file" value="选择文件">
+                <input type="submit" value="直接上传">
+            </form>
+        </div>
+        <div>
+            <form method="post" action="http://localhost:5001/user/upload" enctype="multipart/form-data">
+                <input name="file" type="file" value="选择文件">
+                <input type="submit" value="zuul上传">
+            </form>
+        </div>
+        <div>
+            <form method="post" action="http://localhost:5001/zuul/user/upload" enctype="multipart/form-data">
+                <input name="file" type="file" value="选择文件">
+                <input type="submit" value="略过zuul dispatcher上传">
+            </form>
+        </div>
+    </body>
+</html>

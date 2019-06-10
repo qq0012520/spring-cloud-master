@@ -66,5 +66,14 @@
         <module>cloud-03-consumer-b</module>
         <module>cloud-03-hystrix-dashboard</module>
         <module>cloud-03-hystrix-turbine</module>
+        <module>cloud-04-provider-a</module>
+        <module>cloud-04-provider-b</module>
+        <module>cloud-04-eureka-server</module>
+        <module>cloud-04-consumer</module>
+        <module>cloud-05-user-service</module>
+        <module>cloud-05-order-service</module>
+        <module>cloud-05-eureka-server</module>
+        <module>cloud-05-zuul-a</module>
+        <module>cloud-05-zuul-b</module>
     </modules>
 </project>

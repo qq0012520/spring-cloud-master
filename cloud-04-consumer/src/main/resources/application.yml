@@ -1,0 +1,42 @@
+spring:
+  application:
+    name: consumer-service
+  cloud:
+    loadbalancer:
+      retry:
+        enabled: true
+
+server:
+  port: 8080
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    hostname: localhost
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
+
+ribbon:
+  ConnectTimeout: 1000 #设置feign连接超时时间(feign底层使用ribbon)
+  ReadTimeout: 1500 #设置feign请求超时时间(feign底层使用ribbon)
+  OkToRetryOnAllOperations: true # 这里发现即使服务被提前熔断后，重试机制依然会被执行
+  MaxAutoRetriesNextServer: 1 # 实例最大切换次数
+  MaxAutoRetries: 1 # 每个实例最大重试次数
+
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 6000 # !!! 这里发现即使服务被提前熔断后，重试机制依然会被执行
+feign:
+  compression:
+    request:
+      enabled: true
+    response:
+      enabled: true
+  hystrix:
+    enabled: true # * 激活Feign使用Hystrix
+

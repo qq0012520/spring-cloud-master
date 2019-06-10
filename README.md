@@ -32,3 +32,14 @@ management.endpoints.web.exposure.include=hystrix.stream
 * 集群监控：首先创建turbine服务，将服务注册到Eureka中并将要监控的服务名配置上。
 然后在Dashboard控制台中输入如turbine监控url，
 比如：http://localhost:3001/turbine.stream
+## 4.cloud-04
+Feign 微服务内部调用
+* 重点：Feign 默认使用Ribbon进行负载均衡。
+设置 feign.hystrix.enabled=true 让Feign开启Hystrix的服务熔断功能
+## 5.cloud-05
+Zuul微服务集群网关
+####1. 网关配置
+* 重点：引入zuul和eureka依赖，Application加上@EnableZuulProxy注解，配置eureka服务器地址，配置路由映射
+####2. 实现ZuulFilter过滤器
+####3. 通过Zuul进行文件上传
+####4. 实现FallbackProvider来进行服务降级
