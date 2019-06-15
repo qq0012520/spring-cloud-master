@@ -1,0 +1,12 @@
+server:
+  port: 8888
+spring:
+  application:
+    name: server-app
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/qq0012520/cloud-config-center-repo.git
+          username: qq0012520
+          password: ppoo56ii

@@ -75,5 +75,10 @@
         <module>cloud-05-eureka-server</module>
         <module>cloud-05-zuul-a</module>
         <module>cloud-05-zuul-b</module>
+        <module>cloud-06-config-server</module>
+        <module>cloud-06-config-client</module>
+        <module>cloud-07-bus-server</module>
+        <module>cloud-07-bus-client-a</module>
+        <module>cloud-07-bus-client-b</module>
     </modules>
 </project>
