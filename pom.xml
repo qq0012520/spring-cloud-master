@@ -80,5 +80,9 @@
         <module>cloud-07-bus-server</module>
         <module>cloud-07-bus-client-a</module>
         <module>cloud-07-bus-client-b</module>
+        <module>cloud-08-eureka-server</module>
+        <module>cloud-08-zipkin-client-a</module>
+        <module>cloud-08-zipkin-client-b</module>
+        <module>cloud-08-zipkin-client-c</module>
     </modules>
 </project>

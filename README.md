@@ -66,3 +66,25 @@ Bus消息总线和集群配置中心
 
 *注意：通过actuator的方式修改配置值是指临时性的，他不会修改git中配置的值
 ，如果应用重启后，还是会去git上读取*
+
+## 8.cloud-8
+分布式系统链路追踪Zipkin使用
+####1. 重点： 追踪客户端配置：
+配置zipkin采集服务器地址：  
+spring.zipkin.base-url=http://localhost:9411/   
+配置采样率（一批请求中有多少比例会被采样）：   
+spring.sleuth.sampler.probability=1 0.001 - 1 （从千分之一到百分之百）
+
+####1. 重点： 追踪采样服务器：
+从以下地址下载最新的服务器Jar包：  
+https://search.maven.org/remote_content?g=io.zipkin&a=zipkin-server&v=LATEST&c=exec   
+下载完成后运行：java -jar zipkin.jar   
+&ensp;&ensp;*tip：从v2版本开始，官方不推荐自己搭建zipkin采样服务器，
+而是推荐使用他们编译好的Jar包*  
+&ensp;&ensp;可以通过springboot传递参数的方式来配置服务器，所有的配置参数可以
+参考项目里的 zipkin-server-shared.yml 文件。   
+&ensp;&ensp;如果用mysql数据库保存（默认使用内存保存）链路数据
+那么要先导入zipkin要用到的数据库表 zipkin_mysql.sql，然后
+在启动jar时传入响应参数，比如：   
+`java -jar zipkin-server-2.12.9-exec.jar
+ --STORAGE_TYPE=mysql --MYSQL_USER=mysql_accessor --MYSQL_PASS=Ppoo56i$ --MYSQL_HOST=192.168.56.1`
